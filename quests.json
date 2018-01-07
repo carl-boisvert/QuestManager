@@ -1,0 +1,31 @@
+[
+  {
+    "objectives": [
+      {
+        "count": 10,
+        "targetId": "WARLOCK_MINIONS",
+        "objectiveName": "Kill the Warlock minions",
+        "type": "GetKill"
+      },
+      {
+        "count": 1,
+        "targetId": "WARLOCK",
+        "objectiveName": "Kill the Warlock",
+        "type": "GetKill"
+      },
+      {
+        "count": 1,
+        "targetId": "WARLOCK_STAFF",
+        "objectiveName": "Get the Warlock staff",
+        "type": "GetItem"
+      },
+      {
+        "targetId": "QUEST_GIVER",
+        "objectiveName": "Talk to me after",
+        "type": "TalkTo"
+      }
+    ],
+    "questName": "We need to end this",
+    "mustBeDone": []
+  }
+]
