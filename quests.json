@@ -1,31 +1,32 @@
 [
   {
-    "objectives": [
-      {
-        "count": 10,
-        "targetId": "WARLOCK_MINIONS",
-        "objectiveName": "Kill the Warlock minions",
-        "type": "GetKill"
-      },
-      {
-        "count": 1,
-        "targetId": "WARLOCK",
-        "objectiveName": "Kill the Warlock",
-        "type": "GetKill"
-      },
-      {
-        "count": 1,
-        "targetId": "WARLOCK_STAFF",
-        "objectiveName": "Get the Warlock staff",
-        "type": "GetItem"
-      },
-      {
-        "targetId": "QUEST_GIVER",
-        "objectiveName": "Talk to me after",
-        "type": "TalkTo"
-      }
-    ],
-    "questName": "We need to end this",
-    "mustBeDone": []
+    "id": "4aa21a1f-be57-4a07-91ae-52aad589a74e",
+    "objectives": [],
+    "questName": "dasdasd",
+    "parentQuests": []
+  },
+  {
+    "id": "de5a71bd-99ce-4af5-90fd-c933bd5ba33f",
+    "objectives": [],
+    "questName": "asdassad",
+    "parentQuests": []
+  },
+  {
+    "id": "6fd0c110-f7c1-4b44-a33f-c86ee9abc4eb",
+    "objectives": [],
+    "questName": "asdwqdqwd",
+    "parentQuests": []
+  },
+  {
+    "id": "73431fa5-4922-443b-8ad9-bbd4d02c69d0",
+    "objectives": [],
+    "questName": "edewwf",
+    "parentQuests": []
+  },
+  {
+    "id": "cda32fd5-6ad8-4405-ae7e-3aec8547bb4e",
+    "objectives": [],
+    "questName": "Kill Jenkins",
+    "parentQuests": []
   }
 ]

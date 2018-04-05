@@ -8,16 +8,17 @@ import models.Quest;
 import models.QuestManager;
 
 public class EditQuestWindow extends QuestView{
-	
+
+	private static final long serialVersionUID = 1L;
 	private Quest oldQuest;
 	private JButton deleteButton;
 
-	public EditQuestWindow(Controller controller, Quest quest) {
-		super(controller);
+	public EditQuestWindow(Controller controller, QuestManager questManager, Quest quest) {
+		super(controller, questManager);
 		oldQuest = quest;
 		objectiveName.setText(quest.getQuestName());
 		objectives.setListData(quest.getObjectives());
-		questDependency = new JList<Quest>(quest.getMustBeDone());
+		questDependency = new JList<Quest>(quest.getParentQuests());
 		this.windowTitle = "Edit Quest";
 		this.objectiveButtonText = "Edit Objective";
 		this.actionButtonText = "Edit Quest";

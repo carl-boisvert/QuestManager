@@ -21,6 +21,11 @@ public class QuestManager {
 	
 	private Vector<Quest> quests = new Vector<Quest>();
 	
+	public QuestManager()
+	{
+		quests = new Vector<Quest>(1,1);
+	}
+	
 	public void addQuest(Quest quest) {
 		quests.add(quest);
 	}
@@ -67,6 +72,7 @@ public class QuestManager {
 			FileWriter fileWriter = new FileWriter("quests.json");
 			fileWriter.write(json);
 			fileWriter.flush();
+			fileWriter.close();
 			System.out.println("Quest saved");
 		} catch(IOException e) {
 			System.out.println("Error while writing quests to file");
@@ -97,7 +103,11 @@ public class QuestManager {
             
             Gson gson = gsonBilder.create();
             
-            quests = gson.fromJson(json, questType);
+            Vector<Quest> jsonQuests = gson.fromJson(json, questType);
+            if(jsonQuests != null) {
+            		quests = jsonQuests;
+            }
+            
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

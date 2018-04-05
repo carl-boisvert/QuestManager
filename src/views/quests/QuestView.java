@@ -1,9 +1,7 @@
 package views.quests;
 
 import java.awt.Color;
-import java.awt.event.MouseListener;
 import java.util.Vector;
-
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -11,15 +9,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
-
 import controllers.Controller;
 import controllers.QuestController;
 import listeners.ObjectiveListListener;
 import models.Quest;
+import models.QuestManager;
 import models.objectives.Objective;
 import net.miginfocom.swing.MigLayout;
 
 public abstract class QuestView extends JFrame {
+
+	private static final long serialVersionUID = 1L;
 	protected JTextField objectiveName = new JTextField(40);
 	protected DefaultListModel<Objective> objectivesModel = new DefaultListModel<Objective>();
 	protected JList<Objective> objectives = new JList<Objective>(objectivesModel);
@@ -29,9 +29,11 @@ public abstract class QuestView extends JFrame {
 	protected String windowTitle;
 	protected String objectiveButtonText;
 	protected String actionButtonText;
+	protected QuestManager questManager;
 	
-	public QuestView(Controller controller) {
+	public QuestView(Controller controller, QuestManager questManager) {
 		this.controller = controller;
+		this.questManager = questManager;
 	}
 	
 	protected void setView() {
@@ -61,8 +63,8 @@ public abstract class QuestView extends JFrame {
 		
 		//Parent Quest
 		JLabel parent = new JLabel("Dependend on: ");
-		JComboBox quests = new JComboBox();
-		JButton addDependency = new JButton("Add Objective");
+		JComboBox<Quest> quests = new JComboBox<Quest>();
+		JButton addDependency = new JButton("Add Dependency");
 		
 		add(parent, "align right");
 		add(quests, "align left");

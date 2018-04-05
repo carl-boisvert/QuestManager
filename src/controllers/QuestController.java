@@ -1,12 +1,9 @@
 package controllers;
 
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-
 import javax.swing.JButton;
-
 import enums.ObjectivesTypes;
 import models.Quest;
 import models.QuestManager;
@@ -18,7 +15,6 @@ import views.MainView;
 import views.objectives.AddObjectiveWindow;
 import views.objectives.EditObjectiveWindow;
 import views.objectives.ObjectiveView;
-import views.objectives.types.GetItemObjectiveView;
 import views.quests.AddQuestWindow;
 import views.quests.EditQuestWindow;;
 
@@ -31,11 +27,14 @@ public class QuestController extends Controller implements WindowListener{
 	private EditObjectiveWindow editObjectiveWindow;
 	private Quest quest;
 	private Objective obj;
+	private boolean initialized = false;
 	
 	public QuestController() {
 		questManager = new QuestManager();
+		questManager.loadQuests();
 		mainView = new MainView(this, "Quest Editor", questManager);
 		mainView.addWindowListener(this);
+		initialized = true;
 	}
 	
 	public void addQuest() {
@@ -46,7 +45,7 @@ public class QuestController extends Controller implements WindowListener{
 	
 	public void editQuest(Quest quest) {
 		this.quest = quest;
-		editQuestWindow = new EditQuestWindow(this, quest);
+		editQuestWindow = new EditQuestWindow(this, questManager, quest);
 		editQuestWindow.setVisible(true);
 	}
 	
@@ -66,7 +65,7 @@ public class QuestController extends Controller implements WindowListener{
 				break;
 			case "Create Quest":
 				quest.setQuestName(addQuestWindow.getObjectiveName());
-				quest.setMustBeDone(addQuestWindow.getQuestDependency());
+				quest.setParentQuests(addQuestWindow.getQuestDependency());
 				questManager.addQuest(quest);
 				addQuestWindow.dispose();
 				mainView.updateUI();
@@ -82,7 +81,7 @@ public class QuestController extends Controller implements WindowListener{
 				Quest questEdited = new Quest();
 				questEdited.setQuestName(editQuestWindow.getObjectiveName());
 				questEdited.setObjectives(editQuestWindow.getObjectives());
-				questEdited.setMustBeDone(editQuestWindow.getQuestDependency());
+				questEdited.setParentQuests(editQuestWindow.getQuestDependency());
 				questManager.updateQuest(editQuestWindow.getOldQuest(), questEdited);
 				editQuestWindow.dispose();
 				mainView.updateUI();
@@ -161,8 +160,11 @@ public class QuestController extends Controller implements WindowListener{
 
 	@Override
 	public void windowOpened(WindowEvent e) {
-		questManager.loadQuests();
-		mainView.updateUI();
+		if(initialized)
+		{
+			questManager.loadQuests();
+			mainView.updateUI();
+		}
 	}
 
 	@Override

@@ -13,19 +13,18 @@ import javax.swing.JTextField;
 
 import controllers.Controller;
 import enums.ObjectivesTypes;
-import models.Quest;
-import models.QuestManager;
-import models.objectives.KillObjective;
 import net.miginfocom.swing.MigLayout;
 import views.objectives.types.GetItemObjectiveView;
 import views.objectives.types.GetKillObjectiveView;
 import views.objectives.types.TalkToObjectiveView;
 
 public abstract class ObjectiveView extends JFrame{
+
+	private static final long serialVersionUID = 1L;
 	protected String windowTitle;
 	protected String actionButtonText;
 	protected JTextField objectiveName = new JTextField(40);;
-	protected JComboBox objectiveTypes = new JComboBox(ObjectivesTypes.values());;
+	protected JComboBox<ObjectivesTypes> objectiveTypes = new JComboBox<ObjectivesTypes>(ObjectivesTypes.values());;
 	
 	protected Controller controller;
 	
@@ -64,7 +63,8 @@ public abstract class ObjectiveView extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				currentPanel.setVisible(false);
 				remove(currentPanel);
-				JComboBox type = (JComboBox)e.getSource();
+				@SuppressWarnings("unchecked")
+				JComboBox<ObjectivesTypes> type = (JComboBox<ObjectivesTypes>)e.getSource();
 				switch((ObjectivesTypes)type.getSelectedItem()) {
 				case GetKill:
 					getKillView = new GetKillObjectiveView();

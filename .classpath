@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="librairies/miglayout-4.0.jar"/>
 	<classpathentry kind="lib" path="/Users/carlboisvert/eclipse-workspace/QuestManager/librairies/gson-2.8.2.jar"/>
+	<classpathentry kind="lib" path="librairies/org.abego.treelayout.core-1.0.3.jar" sourcepath="librairies/treelayout-master"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

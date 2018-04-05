@@ -9,7 +9,8 @@ import javax.swing.SpinnerNumberModel;
 import net.miginfocom.swing.MigLayout;
 
 public class GetItemObjectiveView extends JPanel{
-	
+
+	private static final long serialVersionUID = 1L;
 	private JTextField targetId;
 	private JSpinner count;
 	public GetItemObjectiveView() {

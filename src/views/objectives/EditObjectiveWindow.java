@@ -8,6 +8,8 @@ import models.objectives.TalkToObjective;
 
 public class EditObjectiveWindow extends ObjectiveView{
 
+	private static final long serialVersionUID = 1L;
+
 	public EditObjectiveWindow(Controller controller, Objective obj) {
 		super(controller);
 		windowTitle = "Edit Objective";

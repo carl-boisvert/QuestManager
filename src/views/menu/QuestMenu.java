@@ -9,6 +9,7 @@ import views.menu.listeners.QuestMenuListener;
 
 public class QuestMenu extends JMenu{
 	
+	private static final long serialVersionUID = 1L;
 	private JMenuItem newQuest;
 	private QuestMenuListener questMenuListener;
 	

@@ -19,6 +19,7 @@ public class ObjectiveListListener implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if (e.getClickCount() == 2) {
+			@SuppressWarnings("unchecked")
 		    JList<Objective> objectiveList = (JList<Objective>)e.getSource();
 		    Objective obj = objectiveList.getSelectedValue();
 		    questController.editObjective(obj);
