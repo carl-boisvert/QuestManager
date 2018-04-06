@@ -26,9 +26,11 @@ public class QuestTreeView extends JPanel{
 	DefaultTreeForTreeLayout<QuestPanel> treeData = null;
 	DefaultConfiguration<QuestPanel> configuration;
 	TreeLayout<QuestPanel> treeLayout;
+	private QuestController questController;
 	
 	public QuestTreeView(QuestController controller, QuestManager questManager) {
 		this.questManager = questManager;
+		this.questController = controller;
 		updateUI();
 	}
 
@@ -59,7 +61,8 @@ public class QuestTreeView extends JPanel{
 			QuestPanelExtendProvider provider = new QuestPanelExtendProvider();
 			treeLayout = new TreeLayout<QuestPanel>(tree, provider, configuration);
 			
-			QuestTreePane questTreePane = new QuestTreePane(treeLayout, controller);
+			QuestTreePanel questTreePane = new QuestTreePanel(treeLayout, questController);
+			questTreePane.updateUi();
 			add(questTreePane);
 		}
 	}
